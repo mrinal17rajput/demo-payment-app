@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: docker-k8s-demo-deployment
+  labels:
+    app: docker-k8s-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: docker-k8s-demo
+  template:
+    metadata:
+      lables:
+        app: docker-k8s-demo
+    spec:
+      containers:
+      - name: docker-k8s-demo
+        image: mrinalrajput/demo-account-payment
+        ports:
+        - containerPort: 8081
